@@ -1,25 +1,150 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Multiselect from "multiselect-react-dropdown";
+
+import "./App.css";
 
 function App() {
+  const assetList = [
+    {
+      cat: "-",
+      key: "Select All",
+    },
+    {
+      cat: "Rooftop Units",
+      key: "asdf",
+    },
+    {
+      cat: "Rooftop Units",
+      key: "RTU",
+    },
+    {
+      cat: "Fire Safety",
+      key: "Alarm",
+    },
+    {
+      cat: "Fire Safety",
+      key: "Fire Extinguisher",
+    },
+    {
+      cat: "Fire Safety",
+      key: "Hydrant",
+    },
+  ];
+  const [selectedValues, setSelectedValues] = useState([]);
+  const [assets, setAssets] = useState(assetList);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div style={{ flex: 1 }}>
+        <h1>Build-Ops Multi-Select Dropdown</h1>
+      </div>
+      <div style={{ flex: 10 }}>
+        <p
+          style={{
+            padding: "20px",
+            fontFamily: "Trebuchet MS, sans-serif",
+            width: "50%",
+            right: "0",
+            left: "0",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          One of the best parts about React is its interoperability with
+          powerful npm packages. This is a reusable component for a{" "}
+          <i>multi-select dropdown</i> created using the{" "}
+          <b>multiselect-react-dropdown</b> npm package. It has the ability to{" "}
+          <b>group</b>, <b>select/de-select</b> all elements as well as{" "}
+          <b>search</b>
+        </p>
+        <Multiselect
+          className="multi-select"
+          displayValue="key"
+          groupBy="cat"
+          onKeyPressFn={(event) => console.log(event)}
+          onRemove={(selectedList, selectedItem) => {
+            if (selectedItem.key === "Select All") {
+              setSelectedValues([]);
+            }
+          }}
+          onSearch={(event) => console.log(event)}
+          onSelect={(selectedList, selectedItem) => {
+            console.log(selectedList);
+            console.log(selectedItem);
+            if (selectedItem.key === "Select All") {
+              setSelectedValues(assetList);
+            }
+          }}
+          options={assets}
+          showCheckbox
+          selectedValues={selectedValues}
+        />
+      </div>
+      <div style={{ color: "red", flex: 10 }}>
+        <p>Bye</p>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+function NpmDropdown({
+  event,
+  selectedList,
+  selectedItem,
+  setSelectedValues,
+  assetList,
+  assets,
+  selectedValues,
+}) {
+  return (
+    <div
+      style={{
+        flex: 10,
+      }}
+    >
+      <p
+        style={{
+          padding: "20px",
+          fontFamily: "Trebuchet MS, sans-serif",
+          width: "50%",
+          right: "0",
+          left: "0",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        One of the best parts about React is its interoperability with powerful
+        npm packages. This is a reusable component for a{" "}
+        <i>multi-select dropdown</i> created using the{" "}
+        <b>multiselect-react-dropdown</b> npm package. It has the ability to{" "}
+        <b>group</b>, <b>select/de-select</b> all elements as well as{" "}
+        <b>search</b>
+      </p>
+      <Multiselect
+        className="multi-select"
+        displayValue="key"
+        groupBy="cat"
+        onKeyPressFn={(event) => console.log(event)}
+        onRemove={(selectedList, selectedItem) => {
+          if (selectedItem.key === "Select All") {
+            setSelectedValues([]);
+          }
+        }}
+        onSearch={(event) => console.log(event)}
+        onSelect={(selectedList, selectedItem) => {
+          console.log(selectedList);
+          console.log(selectedItem);
+
+          if (selectedItem.key === "Select All") {
+            setSelectedValues(assetList);
+          }
+        }}
+        options={assets}
+        showCheckbox
+        selectedValues={selectedValues}
+      />
+    </div>
+  );
+}
