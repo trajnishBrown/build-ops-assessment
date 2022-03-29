@@ -7,28 +7,6 @@
   background-color: white;
 }
 
-.dropdown-label {
-  padding: "20px";
-  font-family: "Trebuchet MS, sans-serif";
-  width: "50%";
-  right: "0";
-  left: "0";
-  margin-left: "auto";
-  margin-right: "auto";
-}
-
-.multi-select {
-  /* position: fixed; */
-  /* center the element */
-  right: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
-  /* give it dimensions */
-  min-height: 10em;
-  width: 50%;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
