@@ -2,6 +2,7 @@ import React from "react";
 
 import "./App.css";
 import Dropdown1 from "./components/dropdown1/Dropdown1";
+import Dropdown2 from "./components/dropdown2/Dropdown2";
 
 function App() {
   return (
@@ -9,12 +10,10 @@ function App() {
       <div style={{ flex: 1 }}>
         <h1>Build-Ops Multi-Select Dropdown</h1>
       </div>
-      <div style={{ flex: 10 }}>
-        <Dropdown1></Dropdown1>
-      </div>
-      <div style={{ color: "red", flex: 10 }}>
-        <p>Bye</p>
-      </div>
+
+      <Dropdown1></Dropdown1>
+
+      <Dropdown2></Dropdown2>
     </div>
   );
 }

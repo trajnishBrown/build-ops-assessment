@@ -34,7 +34,8 @@ function Dropdown1() {
   const [assets, setAssets] = useState(assetList);
 
   return (
-    <div>
+    <div style={{ flex: 1 }}>
+      <h2>Prototype 1</h2>
       <p
         style={{
           padding: "20px",
